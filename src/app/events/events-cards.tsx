@@ -1,8 +1,9 @@
 "use client"
 import {Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle} from "@/components/ui/card";
-import {Button} from "@/components/ui/button";
+import {Button, buttonVariants} from "@/components/ui/button";
 import {deleteEvent} from "@/controllers/events.controller";
 import {Event} from "@/models/event";
+import Link from "next/link";
 
 const EventsCards = ({events}: {events: Event[]}) => {
     return (
@@ -18,7 +19,9 @@ const EventsCards = ({events}: {events: Event[]}) => {
                     </CardContent>
                     <CardFooter className={"flex gap-3"}>
                         <Button variant={"destructive"} onClick={() => deleteEvent(event.id)}>Delete</Button>
-                        <Button variant={"outline"}>Details</Button>
+                        <Link href={`/events/${event.id}`} className={buttonVariants({variant: "outline"})}>
+                            Details
+                        </Link>
                     </CardFooter>
                 </Card>
             ))}
