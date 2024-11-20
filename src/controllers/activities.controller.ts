@@ -27,7 +27,7 @@ export async function createActivity(activity: z.infer<typeof newActivityDto>) {
 }
 
 export async function getActivities(): Promise<Activity[]> {
-    const activities = await fetch(`${process.env.BACKEND_BASE_URL}/activities`);
+    const activities = await fetch(`${process.env.BACKEND_BASE_URL}/activities`, {cache: "no-store"});
     const activitiesData = await activities.json() as Activity[];
     return activitiesData.map((activity: Activity) => ({
         ...activity,
@@ -37,7 +37,7 @@ export async function getActivities(): Promise<Activity[]> {
 }
 
 export async function getActivitiesByEventId(id: string): Promise<Activity[]> {
-    const activities = await fetch(`${process.env.BACKEND_BASE_URL}/events/${id}/activities`);
+    const activities = await fetch(`${process.env.BACKEND_BASE_URL}/events/${id}/activities`, {cache: "no-store"});
     const activitiesData = await activities.json() as Activity[];
     return activitiesData.map((activity: Activity) => ({
         ...activity,
