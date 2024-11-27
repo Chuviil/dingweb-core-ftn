@@ -6,14 +6,14 @@ export const {handlers, signIn, signOut, auth} = NextAuth({
     providers: [
         Credentials({
             credentials: {
-                username: {label: "Username", type: "text"},
+                email: {label: "Email", type: "text"},
                 password: {label: "Password", type: "password"},
             },
             authorize: async (credentials) => {
                 let user = null
 
                 try {
-                    user = await authUser(credentials.username as string, credentials.password as string)
+                    user = await authUser(credentials.email as string, credentials.password as string)
 
                     return user
                 } catch (e) {
