@@ -6,7 +6,7 @@ import {redirect} from "next/navigation";
 import {Event} from "@/models/event";
 import {revalidatePath} from "next/cache";
 
-export async function createEvent(event: z.infer<typeof newEventDto>) : Promise<Event> {
+export async function createEvent(event: z.infer<typeof newEventDto>): Promise<Event> {
     const {title, description, date} = event;
     const createdEvent = await fetch(`${process.env.BACKEND_BASE_URL}/events`, {
         method: "POST",
@@ -21,7 +21,7 @@ export async function createEvent(event: z.infer<typeof newEventDto>) : Promise<
     redirect("/events")
 }
 
-export async function getEvents() : Promise<Event[]>{
+export async function getEvents(): Promise<Event[]> {
     const events = await fetch(`${process.env.BACKEND_BASE_URL}/events`, {cache: "no-store"});
     const eventsData = await events.json() as Event[];
     return eventsData.map((event: Event) => ({

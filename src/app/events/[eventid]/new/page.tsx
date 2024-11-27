@@ -1,8 +1,8 @@
 import {NewActivityForm} from "@/app/events/[eventid]/new/activity-form";
 
-type Params = Promise<{eventid: string}>
+type Params = Promise<{ eventid: string }>
 
-const NewActivityPage = async ({params}: { params: Params}) => {
+const NewActivityPage = async ({params}: { params: Params }) => {
     const {eventid} = await params;
 
     return (
