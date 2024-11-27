@@ -26,8 +26,9 @@ export async function getEvents(): Promise<Event[]> {
     const eventsData = await events.json() as Event[];
     return eventsData.map((event: Event) => ({
         ...event,
-        start_date: new Date(event.start_date),
-        end_date: new Date(event.end_date),
+        date: new Date(event.date),
+        createdAt: new Date(event.createdAt),
+        updatedAt: new Date(event.updatedAt),
     }));
 }
 

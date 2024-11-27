@@ -15,7 +15,7 @@ const EventsCards = ({events}: { events: Event[] }) => {
                         <CardDescription>{event.description}</CardDescription>
                     </CardHeader>
                     <CardContent>
-                        <p>From: {event.start_date.toLocaleDateString('es-EC')} To: {event.end_date.toLocaleDateString('es-EC')}</p>
+                        <p>Date: {event.date.toLocaleDateString('es-EC')}</p>
                     </CardContent>
                     <CardFooter className={"flex gap-3"}>
                         <Button variant={"destructive"} onClick={() => deleteEvent(event.id)}>Delete</Button>
