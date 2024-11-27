@@ -1,5 +1,5 @@
-import { z } from 'zod';
-import { isBefore, addMinutes } from 'date-fns';
+import {z} from 'zod';
+import {addMinutes, isBefore} from 'date-fns';
 
 const newActivityDto = z.object({
     event_id: z.string(),
@@ -8,7 +8,7 @@ const newActivityDto = z.object({
     start_date: z.string(),
     end_date: z.string(),
 }).superRefine((data, ctx) => {
-    const { start_date, end_date } = data;
+    const {start_date, end_date} = data;
 
     // Check if the end date is at least 15 minutes after the start date
     if (isBefore(new Date(end_date), addMinutes(new Date(start_date), 15))) {

@@ -1,14 +1,14 @@
 "use client"
 
 import React from 'react';
-import { Button } from "@/components/ui/button";
+import {Button} from "@/components/ui/button";
 import Link from "next/link";
 import {ClipboardCheck, Pencil, Trash2} from "lucide-react";
-import { format } from "date-fns";
+import {format} from "date-fns";
 import {Activity} from "@/models/activity";
 import {deleteActivity} from "@/controllers/activities.controller";
 
-const ActivitiesTable = ({ activities, eventId }: {activities: Activity[], eventId: string}) => {
+const ActivitiesTable = ({activities, eventId}: { activities: Activity[], eventId: string }) => {
     const formatDate = (date: Date) => {
         return format(new Date(date), 'MMM dd, yyyy HH:mm');
     };
@@ -64,7 +64,7 @@ const ActivitiesTable = ({ activities, eventId }: {activities: Activity[], event
                                             size="icon"
                                             className="h-8 w-8"
                                         >
-                                            <Pencil className="h-4 w-4" />
+                                            <Pencil className="h-4 w-4"/>
                                         </Button>
                                     </Link>
                                     <Button
@@ -73,7 +73,7 @@ const ActivitiesTable = ({ activities, eventId }: {activities: Activity[], event
                                         className="h-8 w-8"
                                         onClick={async () => await deleteActivity(activity.id, eventId)}
                                     >
-                                        <Trash2 className="h-4 w-4" />
+                                        <Trash2 className="h-4 w-4"/>
                                     </Button>
                                     <Link
                                         href={`/events/${eventId}/edit/${activity.id}`}
@@ -83,7 +83,7 @@ const ActivitiesTable = ({ activities, eventId }: {activities: Activity[], event
                                             size="icon"
                                             className="h-8 w-8"
                                         >
-                                            <ClipboardCheck className={"h-4 w-4"} />
+                                            <ClipboardCheck className={"h-4 w-4"}/>
                                         </Button>
                                     </Link>
                                 </div>

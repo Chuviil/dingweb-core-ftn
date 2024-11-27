@@ -5,7 +5,7 @@ import {deleteEvent} from "@/controllers/events.controller";
 import {Event} from "@/models/event";
 import Link from "next/link";
 
-const EventsCards = ({events}: {events: Event[]}) => {
+const EventsCards = ({events}: { events: Event[] }) => {
     return (
         <>
             {events.map((event) => (

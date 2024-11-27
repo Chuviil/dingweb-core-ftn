@@ -1,8 +1,8 @@
 import React from 'react';
 import ActivitiesTable from './activities-table';
-import { getActivitiesByEventId } from "@/controllers/activities.controller";
+import {getActivitiesByEventId} from "@/controllers/activities.controller";
 
-type Params = Promise<{eventid: string}>
+type Params = Promise<{ eventid: string }>
 
 const ActivitiesPage = async ({params}: { params: Params }) => {
     const {eventid} = await params;
@@ -10,7 +10,7 @@ const ActivitiesPage = async ({params}: { params: Params }) => {
 
     return (
         <div className="container mx-auto py-8">
-            <ActivitiesTable activities={activities} eventId={eventid} />
+            <ActivitiesTable activities={activities} eventId={eventid}/>
         </div>
     );
 };
