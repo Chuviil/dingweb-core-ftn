@@ -7,13 +7,12 @@ import {Event} from "@/models/event";
 import {revalidatePath} from "next/cache";
 
 export async function createEvent(event: z.infer<typeof newEventDto>): Promise<Event> {
-    const {title, description, date} = event;
     const createdEvent = await fetch(`${process.env.BACKEND_BASE_URL}/events`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
         },
-        body: JSON.stringify({title, description, start_date: date.from, end_date: date.to}),
+        body: JSON.stringify(newEventDto.parse(event)),
     })
 
     console.log(await createdEvent.json())
