@@ -5,9 +5,7 @@ const NewEventPage = async () => {
     const users = await getUsers();
 
     return (
-        <div className={"flex justify-center items-center min-h-screen"}>
             <NewEventForm users={users}/>
-        </div>
     );
 };
 

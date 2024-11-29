@@ -5,6 +5,8 @@ import newEventDto from "@/models/new_event.dto";
 import {redirect} from "next/navigation";
 import {Event} from "@/models/event";
 import {revalidatePath} from "next/cache";
+import {AnalyzeEventDto} from "@/models/analyze-event.dto";
+import {AnalyzedEvent} from "@/models/analyzed-event";
 
 export async function createEvent(event: z.infer<typeof newEventDto>): Promise<Event> {
     const createdEvent = await fetch(`${process.env.BACKEND_BASE_URL}/events`, {
@@ -18,6 +20,24 @@ export async function createEvent(event: z.infer<typeof newEventDto>): Promise<E
     console.log(await createdEvent.json())
 
     redirect("/events")
+}
+
+export async function getEventSimilarity(event: AnalyzeEventDto): Promise<AnalyzedEvent | null> {
+    const createdEvent = await fetch(`${process.env.BACKEND_BASE_URL}/events/similar`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(event),
+    })
+
+    const eventData = await createdEvent.json();
+
+    if (!eventData.mostSimilarEvent) {
+        return null;
+    }
+
+    return eventData;
 }
 
 export async function getEvents(): Promise<Event[]> {
