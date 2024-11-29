@@ -9,6 +9,8 @@ export const {handlers, signIn, signOut, auth} = NextAuth({
                 email: {label: "Email", type: "text"},
                 password: {label: "Password", type: "password"},
             },
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-expect-error
             authorize: async (credentials) => {
                 let user = null
 
